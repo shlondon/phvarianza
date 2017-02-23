@@ -1,9 +1,9 @@
 library(shiny)
 library(markdown)
 
-#source("funciones.R")
+source("funciones.R")
 shinyUI(pageWithSidebar(
-        headerPanel(title=HTML("Prueba de hipotesis para la varianza &mu;"),
+        headerPanel(title=HTML("Prueba de hipotesis para la varianza &sigma;"),
                     windowTitle="PH varianza"),
         sidebarPanel(
                 h5('Esta aplicacion sirve para realizar prueba de hipotesis 
@@ -39,7 +39,7 @@ shinyUI(pageWithSidebar(
                 numericInput(inputId='mu0', 
                              label=HTML("Ingrese el valor de referencia 
                                         &sigma;<sub>0</sub> para la probar
-                                        H<sub>0</sub>: &sigma; = &sigma;<sub>0</sub>"), 
+                                        H<sub>0</sub>: &sigma; = &sigma;2<sub>0</sub>"), 
                              value=0),
                 
                 selectInput(inputId="h0", 
@@ -76,13 +76,20 @@ shinyUI(pageWithSidebar(
                                                 width='70%', height='300px'),
                                      
                                      h5("Tabla con las estadisticas de resumen:"),
-                                     tableOutput('statistic'),
+                                     tableOutput('statistic'), 
                                      
-                                     h5("- Resultado de la prueba de hipotesis:"),
-                                     textOutput("resul1"),
+                                     h5("En la siguiente tabla se muestran los principales elementos de la prueba de hipotesis:
+                                        varianza muestral, varianza escogida para la hipotesis nula, estadistico de prueba,
+                                        tipo de prueba, valores de la region critica de rechazo, intervalo de confianza y
+                                        conclusion de la prueba."),
+                                     tableOutput("analisis_ph")),
                                      
-                                     h5(HTML("- Intervalo de confianza para la media &mu;")),
-                                     textOutput("resul2")),
+                                     #h5("- Resultado de la prueba de hipotesis:"),
+                                     #textOutput("resul1"),
+                                     
+                                     #h5(HTML("- Intervalo de confianza para la media &mu;")),
+                                     #textOutput("resul2")),
+                                     
                             
                             tabPanel("Base de datos", 
                                      "A continuacion la base de datos ingresada por el usuario.",
