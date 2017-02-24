@@ -97,10 +97,10 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                          sep = "  "),
                                                    paste("(",
                                                          as.character(
-                                                                 round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
+                                                                 round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad),8)),
                                                          "-",
                                                          as.character(
-                                                                 round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad),8)),
+                                                                 round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
                                                          ")"),
                                                     if(ep <= lado_izq){
                                                                    paste("El estadistico de prueba es igual a", round(ep,8),
@@ -143,10 +143,10 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                                  sep = "  "),
                                                            paste("(",
                                                                  as.character(
-                                                                         round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
+                                                                         round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad),8)),
                                                                  "-",
                                                                  as.character(
-                                                                         round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad),8)),
+                                                                         round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
                                                                  ")"),
                                                            if(ep >= lado_der){
                                                                    paste("El estadistico de prueba es igual a", round(ep,8),
