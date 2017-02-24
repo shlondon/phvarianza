@@ -5,7 +5,7 @@ shinyServer(function(input,output,session){
         output$analisis_ph <- renderTable({
                 inFile <- input$file1
                 if(is.null(inFile)) 
-                        dt <- read.table('geardata.txt', header=T, col.names = c("diameter", "bold_value"))
+                        dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
                 else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
                 y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
                 prueba_hip_varianza(variable = y, 
@@ -17,7 +17,7 @@ shinyServer(function(input,output,session){
         observe({
                 inFile <- input$file1
                 if(is.null(inFile)) 
-                        dt <- read.table('geardata.txt', header=T, col.names = c("diameter", "bold_value"))
+                        dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
                 else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
                 updateSelectInput(session, "variable", choices = names(dt))
         })
@@ -25,7 +25,7 @@ shinyServer(function(input,output,session){
         output$summary <- renderTable({
                 inFile <- input$file1
                 if(is.null(inFile)) 
-                        dt <- read.table('geardata.txt', header=T, col.names = c("diameter", "bold_value"))
+                        dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
                 else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
                 dt
         })
@@ -33,7 +33,7 @@ shinyServer(function(input,output,session){
         output$statistic <- renderTable({
                 inFile <- input$file1
                 if(is.null(inFile)) 
-                        dt <- read.table('geardata.txt', header=T, col.names = c("diameter", "bold_value"))
+                        dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
                 else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
                 y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
                 res <- data.frame(Media=mean(y), Varianza=var(y), n=length(y))
@@ -43,7 +43,7 @@ shinyServer(function(input,output,session){
         output$distPlot <- renderPlot({
                 inFile <- input$file1
                 if(is.null(inFile)) 
-                        dt <- read.table('geardata.txt', header=T, col.names = c("diameter", "bold_value"))
+                        dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
                 else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
                 par(mfrow=c(1, 2), bg='gray98')
                 y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable

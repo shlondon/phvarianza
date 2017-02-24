@@ -79,8 +79,7 @@ shinyUI(pageWithSidebar(
                                      tableOutput('statistic'), 
                                      
                                      h5("En la siguiente tabla se muestran los principales elementos de la prueba de hipotesis:
-                                        varianza muestral, varianza escogida para la hipotesis nula, estadistico de prueba,
-                                        tipo de prueba, valores de la region critica de rechazo, intervalo de confianza y
+                                        varianza muestral, varianza escogida para la hipotesis nula, estadistico de prueba, valores de la region critica de rechazo, intervalo de confianza y
                                         conclusion de la prueba."),
                                      tableOutput("analisis_ph")),
                                      
