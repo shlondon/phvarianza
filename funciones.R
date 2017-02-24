@@ -17,14 +17,14 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
         
         if(tipo_de_prueba == "two.sided"){
                 #Valor de la distribucion chi-cuadrado
-                #a partir del cual inicia la region de rechazo en el lado izquierdo
-                #de la distribución
-                lado_izq <- qchisq((1-nivel_significancia)/2,grados_de_libertad)
-                
-                #Valor de la distribucion chi-cuadrado
                 #a partir del cual inicia la region de rechazo en el lado derecho
                 #de la distribución
-                lado_der <- qchisq(nivel_significancia/2, grados_de_libertad)
+                lado_der <- qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad)
+                
+                #Valor de la distribucion chi-cuadrado
+                #a partir del cual inicia la region de rechazo en el lado izquierdo
+                #de la distribución
+                lado_izq <- qchisq((1-nivel_significancia)/2, grados_de_libertad)
                 
                 varianza_muestral <- var(variable)
                 
@@ -97,10 +97,10 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                          sep = "  "),
                                                    paste("(",
                                                          as.character(
-                                                                 round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia/2, grados_de_libertad),8)),
+                                                                 round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
                                                          "-",
                                                          as.character(
-                                                                 round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
+                                                                 round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad),8)),
                                                          ")"),
                                                     if(ep <= lado_izq){
                                                                    paste("El estadistico de prueba es igual a", round(ep,8),
@@ -143,10 +143,10 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                                  sep = "  "),
                                                            paste("(",
                                                                  as.character(
-                                                                         round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia/2,grados_de_libertad),8)),
+                                                                         round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
                                                                  "-",
                                                                  as.character(
-                                                                         round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2,grados_de_libertad),8)),
+                                                                         round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad),8)),
                                                                  ")"),
                                                            if(ep >= lado_der){
                                                                    paste("El estadistico de prueba es igual a", round(ep,8),
