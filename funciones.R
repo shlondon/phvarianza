@@ -8,7 +8,7 @@
 #tipo_de_prueba, representa las desigualdades de la hipotesis alternativa: dos colas, mayor que, menor que
 
 #Funcion que permite generar el texto de la conclusion de la prueba de hipotesis
-decision <- function(estadistico_prueba){
+decision <- function(estadistico_prueba, lado_izq, lado_der){
         if(estadistico_prueba <= lado_izq |
            estadistico_prueba >= lado_der){
                 paste("El estadistico de prueba es igual a", estadistico_prueba,
@@ -67,7 +67,7 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                  "-",
                                                  as.character(grados_de_libertad * varianza_muestral/lado_der),
                                                  ")"),
-                                           decision(ep)
+                                           decision(ep,lado_izq = lado_izq, lado_der = lado_der)
                                            ))
                 bd
                 
@@ -109,7 +109,7 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                          "-",
                                                          as.character(grados_de_libertad * varianza_muestral/lado_der),
                                                          ")"),
-                                                   decision(ep)
+                                                   decision(ep, lado_izq = lado_izq)
                                          ))
                         bd
                 }else{
@@ -149,7 +149,7 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                                  "-",
                                                                  as.character(grados_de_libertad * varianza_muestral/lado_der),
                                                                  ")"),
-                                                           decision(ep)
+                                                           decision(ep, lado_der = lado_der)
                                                  ))
                                 bd
                         }else{
@@ -169,6 +169,6 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
 
 
 
-#bd <- read.table("geardata.txt", col.names = c("diametro", "bold number"))
-#head(bd)
-#prueba_hip_varianza(bd$diametro,0.01,0.05,"two.sided")
+bd <- read.table("geardata.txt", col.names = c("diametro", "bold number"))
+head(bd)
+prueba_hip_varianza(bd$diametro,0.01,0.05,"two.sided")
