@@ -40,7 +40,7 @@ shinyUI(pageWithSidebar(
                              label=HTML("Ingrese el valor de referencia 
                                         &sigma;<sub>0</sub> para la probar
                                         H<sub>0</sub>: &sigma; = &sigma;2<sub>0</sub>"), 
-                             value=0),
+                             value=0.01),
                 
                 selectInput(inputId="h0", 
                             label=HTML("Elija el tipo de hipotesis alterna
