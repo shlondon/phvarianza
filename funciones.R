@@ -68,7 +68,7 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                            if(ValorP <= 1-nivel_significancia){
                                                    paste("El estadistico de prueba es igual a", round(ep,8),
                                                          "con un valor p igual a", ValorP,
-                                                         "Como el **valor p** es inferior o igual a", 1-nivel_significancia,
+                                                         "Como el valor p es inferior o igual a", 1-nivel_significancia,
                                                          "(nivel de significancia), entonces se rechaza la hipotesis nula en favor de la hipotesis
                                                          alternativa.")
                                            }else{
@@ -141,13 +141,13 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                    if(ValorP <= 1-nivel_significancia){
                                                            paste("El estadistico de prueba es igual a", round(ep,8),
                                                                  "con un valor p igual a", ValorP,
-                                                                 "Como el **valor p** es inferior o igual a", 1-nivel_significancia,
+                                                                 "Como el valor p es inferior o igual a", 1-nivel_significancia,
                                                                  "(nivel de significancia), entonces se rechaza la hipotesis nula en favor de la hipotesis
                                                                  alternativa.")
                                                    }else{
                                                            paste("El estadistico de prueba es igual a", round(ep,8),
                                                                  "con un valor p igual a", ValorP,
-                                                                 "Como el valor es mayor a", 1-nivel_significancia,
+                                                                 "Como el valor p es mayor a", 1-nivel_significancia,
                                                                  "(nivel de significancia), entonces se concluye que los datos no son suficientes para
                                                                  rechazar la hipotesis nula.")
                                                    },
@@ -189,7 +189,7 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                               "Region critica de rechazo de hipotesis nula",
                                                               paste("Intervalo de confianza del", nivel_significancia*100,"%"),
                                                               "Conclusion con el Valor P",
-                                                              "Conclusion con region de rechazo")
+                                                              "Conclusion con la region de rechazo")
                                                  ,
                                                  Valores=c(as.character(round(varianza_muestral,8)),
                                                            as.character(round(ep,8)),
@@ -208,13 +208,13 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                            if(ValorP <= 1-nivel_significancia){
                                                                    paste("El estadistico de prueba es igual a", round(ep,8),
                                                                          "con un valor p igual a", ValorP,
-                                                                         "Como el **valor p** es inferior o igual a", 1-nivel_significancia,
+                                                                         "Como el valor p es inferior o igual a", 1-nivel_significancia,
                                                                          "(nivel de significancia), entonces se rechaza la hipotesis nula en favor de la hipotesis
                                                                          alternativa.")
                                                            }else{
                                                                    paste("El estadistico de prueba es igual a", round(ep,8),
                                                                          "con un valor p igual a", ValorP,
-                                                                         "Como el valor es mayor a", 1-nivel_significancia,
+                                                                         "Como el valor p es mayor a", 1-nivel_significancia,
                                                                          "(nivel de significancia), entonces se concluye que los datos no son suficientes para
                                                                          rechazar la hipotesis nula.")
                                                            },
@@ -248,9 +248,9 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
 
 
 
-bd <- read.table("geardata.txt", col.names = c("diametro", "bold number"))
-head(bd)
-prueba_hip_varianza(bd$diametro,0.01,0.95,"two.sided")
+#bd <- read.table("geardata.txt", col.names = c("diametro", "bold number"))
+#head(bd)
+#prueba_hip_varianza(bd$diametro,0.01,0.95,"two.sided")
 #Valor p
 #ValorPgeneral <- function(tipo_de_prueba){
         #if(tipo_de_prueba=="two.sided"){
