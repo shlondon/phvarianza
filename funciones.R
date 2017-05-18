@@ -62,7 +62,7 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                            paste("(",
                                                  as.character(
                                                          round(grados_de_libertad * varianza_muestral/lado_der,8)),
-                                                 "-",
+                                                 ",",
                                                  as.character(round(grados_de_libertad * varianza_muestral/lado_izq,8)),
                                                  ")"),
                                            if(ValorP <= 1-nivel_significancia){
@@ -134,7 +134,7 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                    paste("(",
                                                          as.character(
                                                                  round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad),8)),
-                                                         "-",
+                                                         ",",
                                                          as.character(
                                                                  round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
                                                          ")"),
@@ -201,7 +201,7 @@ prueba_hip_varianza <- function(variable, varianza_h_n, nivel_significancia,
                                                            paste("(",
                                                                  as.character(
                                                                          round(grados_de_libertad * varianza_muestral/qchisq(nivel_significancia + (1-nivel_significancia)/2, grados_de_libertad),8)),
-                                                                 "-",
+                                                                 ",",
                                                                  as.character(
                                                                          round(grados_de_libertad * varianza_muestral/qchisq((1-nivel_significancia)/2, grados_de_libertad),8)),
                                                                  ")"),

@@ -2,16 +2,16 @@ library(shiny)
 shinyServer(function(input,output,session){
         
         
-        output$analisis_ph <- renderTable({
+       output$analisis_ph <- renderTable({
                 inFile <- input$file1
                 if(is.null(inFile)) 
-                        dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
+                       dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
                 else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
                 y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
                 prueba_hip_varianza(variable = y, 
-                                    varianza_h_n = input$mu0, 
-                                    nivel_significancia = input$alfa,
-                                    tipo_de_prueba = input$h0)
+                                   varianza_h_n = input$mu0, 
+                                  nivel_significancia = input$alfa,
+                                 tipo_de_prueba = input$h0)
         })
         
         observe({
@@ -30,15 +30,15 @@ shinyServer(function(input,output,session){
                 dt
         })
         
-        output$statistic <- renderTable({
-                inFile <- input$file1
-                if(is.null(inFile)) 
-                        dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
-                else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-                y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-                res <- data.frame(Media=mean(y), Varianza=var(y), n=length(y))
-                res
-        })
+       # output$statistic <- renderTable({
+        #        inFile <- input$file1
+         #       if(is.null(inFile)) 
+          #              dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
+           #     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+            #    y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
+             #   res <- data.frame(Media=mean(y), Varianza=var(y), n=length(y))
+              #  res
+        #})
         
         output$distPlot <- renderPlot({
                 inFile <- input$file1
@@ -65,13 +65,13 @@ shinyServer(function(input,output,session){
                 #if(is.null(inFile)) 
                  #       dt <- read.table('geardata.txt', header=T, col.names = c("diameter", "bold_value"))
                 #else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-                #y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-                #ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
-                #conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza', 'no se rechaza')
-                #paste0('El estadistico de prueba fue to=', round(ph$statistic, 2),
-                 #      ' con un valor P de ', round(ph$statistic, 4), ', por lo tanto se concluye
-                  #     que basados en la evidencia muestral la hipotesis nula ', conclusion,
-                   #    ' (nivel de significancia 5%).')
+               # y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
+              #  ph <- Var.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
+             #   conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza', 'no se rechaza')
+            #    paste0('El estadistico de prueba fue to=', round(ph$statistic, 2),
+           #            ' con un valor P de ', round(ph$statistic, 4), ', por lo tanto se concluye
+          #             que basados en la evidencia muestral la hipotesis nula ', conclusion,
+         #              ' (nivel de significancia 5%).')
         #})
         
         

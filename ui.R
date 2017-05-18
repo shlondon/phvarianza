@@ -3,7 +3,7 @@ library(markdown)
 
 source("funciones.R")
 shinyUI(pageWithSidebar(
-        headerPanel(title=HTML("Prueba de hipotesis para la varianza &sigma;"),
+        headerPanel(title=HTML("Prueba de hipotesis para la varianza &sigma;<sup>2</sup>"),
                     windowTitle="PH varianza"),
         sidebarPanel(
                 h5('Esta aplicacion sirve para realizar prueba de hipotesis 
@@ -38,8 +38,9 @@ shinyUI(pageWithSidebar(
                 
                 numericInput(inputId='mu0', 
                              label=HTML("Ingrese el valor de referencia 
-                                        &sigma;<sub>0</sub> para la probar
-                                        H<sub>0</sub>: &sigma; = &sigma;2<sub>0</sub>"), 
+                                        &sigma;<sup>2</sup><sub>0</sub> para la probar
+                                        H<sub>0</sub>: &sigma;<sup>2</sup> = &sigma;<sup>2</sup><sub>0</sub>")
+                             , 
                              value=0.01),
                 
                 selectInput(inputId="h0", 
@@ -75,8 +76,8 @@ shinyUI(pageWithSidebar(
                                      plotOutput("distPlot",
                                                 width='70%', height='300px'),
                                      
-                                     h5("Tabla con las estadisticas de resumen:"),
-                                     tableOutput('statistic'), 
+                                    # h5("Tabla con las estadisticas de resumen:"),
+                                    # tableOutput('statistic'), 
                                      
                                      h5("En la siguiente tabla se muestran los principales elementos de la prueba de hipotesis:
                                         varianza muestral, varianza escogida para la hipotesis nula, estadistico de prueba, valores de la region critica de rechazo, intervalo de confianza y
@@ -94,7 +95,8 @@ shinyUI(pageWithSidebar(
                                      "A continuacion la base de datos ingresada por el usuario.",
                                      uiOutput('summary')),
                             
-                            tabPanel("Teoria", includeMarkdown("include.md"))
+                            tabPanel("Teoria", 
+                                     includeMarkdown("include.md"))
                             
                             )
         )
